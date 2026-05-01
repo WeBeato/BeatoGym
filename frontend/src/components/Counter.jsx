@@ -9,9 +9,7 @@ export default function Counter({ targetNum, startingNum = 0 }) {
     if (targetNum <= 0) return;
 
     const totalSteps = targetNum;
-    console.log(totalSteps);
     const intervalTime = duration / totalSteps;
-    console.log(intervalTime);
 
     const interval = setInterval(() => {
       setCurrentNum((prev) => {

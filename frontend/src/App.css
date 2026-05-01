@@ -1,0 +1,231 @@
+/* Hero Section*/
+.hero {
+    background: url(../public/pics/gym-header.jpg) no-repeat center -40px;
+    background-size: cover;
+    height: 500px;
+    position: relative;
+    color: #fff;
+}
+
+.hero__wrap {
+    position: relative;
+    z-index: 1;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 200px;
+    text-align: center;
+}
+
+.hero__title {}
+
+.hero__subtitle {}
+
+.hero__cta {
+    font-size: 12px;
+}
+
+.hero__btn {
+    color: #000;
+    background-color: #eee;
+    border-radius: 16px;
+    width: 100%;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 250ms;
+}
+
+.hero__btn:hover {
+    font-size: 18px;
+}
+
+.hero__statistic {
+    margin-top: 56px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero__foundation,
+.hero__athletes,
+.hero__hour {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero__foundation-num,
+.hero__athletes-num,
+.hero__hour-num {
+    font-size: 18px;
+}
+
+.hero__foundation-text,
+.hero__athletes-text,
+.hero__hour-text {
+    font-size: 16px;
+}
+
+.hero__fade {
+    position: absolute;
+    height: 500px;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    bottom: 0;
+}
+
+/* Responsive */
+@media (min-width: 576px) {
+
+    /* Hero Section*/
+    .hero__content {
+        padding-top: 180px;
+    }
+
+    .hero__cta {
+        font-size: 16px;
+    }
+
+    .hero__btn {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .hero__statistic {
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* Hero Section*/
+    .hero,
+    .hero__wrap,
+    .hero__fade {
+        height: 600px;
+    }
+
+    .hero__content {
+        padding-top: 240px;
+    }
+
+    .hero__cta {
+        font-size: 20px;
+    }
+
+    .hero__btn {
+        max-width: 450px;
+    }
+
+    .hero__statistic {
+        margin-top: 80px;
+    }
+
+    .hero__foundation-num,
+    .hero__athletes-num,
+    .hero__hour-num {
+        font-size: 20px;
+    }
+
+    .hero__foundation-text,
+    .hero__athletes-text,
+    .hero__hour-text {
+        font-size: 18px;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    /* Hero Section */
+    .hero,
+    .hero__wrap,
+    .hero__fade {
+        height: 700px;
+    }
+
+    .hero__content {
+        text-align: start;
+    }
+
+    .hero__btn {
+        margin: 0;
+        max-width: 500px;
+    }
+
+    .hero__statistic {
+        margin-top: 100px;
+    }
+
+    .hero__foundation-num,
+    .hero__athletes-num,
+    .hero__hour-num {
+        font-size: 22px;
+    }
+
+    .hero__foundation-text,
+    .hero__athletes-text,
+    .hero__hour-text {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* Hero Section */
+    .hero__cta {
+        font-size: 24px;
+    }
+
+    .hero__btn {
+        max-width: 600px;
+        font-size: 18px;
+        padding: 6px 0;
+    }
+
+    .hero__btn:hover {
+        max-width: 625px;
+    }
+
+    .hero__statistic {
+        justify-content: center;
+        gap: 180px;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    /* Hero Section */
+    .hero,
+    .hero__wrap,
+    .hero__fade {
+        height: 750px;
+    }
+
+    .hero__content {
+        height: 510px;
+    }
+
+    .hero__cta {
+        font-size: 28px;
+    }
+
+    .hero__btn {
+        max-width: 680px;
+        font-size: 20px;
+        padding: 4px 0;
+    }
+
+    .hero__btn:hover {
+        max-width: 700px;
+    }
+}
