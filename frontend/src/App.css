@@ -34,7 +34,8 @@
 
 .hero__btn {
     color: #000;
-    background-color: #eee;
+    background-color: var(--color-primary);
+    font-family: "vazir-bold";
     border-radius: 16px;
     width: 100%;
     padding: 4px 0;
