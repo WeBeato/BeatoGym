@@ -35,7 +35,7 @@ function App() {
               <div className="hero__content">
                 <h1 className="hero__title">بـیـتـوجـیــــــم</h1>
                 <h2 className="hero__subtitle">
-                  تمرین هوشمندانه، نتیجه‌ی بهتر!
+                  به ریتم خودت تمرین کن!
                 </h2>
                 <p className="hero__cta">
                   همین حالا ثبت‌نام کن و اولین جلسه‌ت رو رایگان تجربه کن.
