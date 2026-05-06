@@ -8,17 +8,19 @@
   src: url(../public/fonts/Vazirmatn-Medium.ttf) format(truetype);
 }
 
-:root{
-  --color-primary:#d4af37;
-  --color-background:#f9f9f9;
-  --color-secondary:#000;
-  --color-text:#4a4a4a;
-  --color-accent:#c0c0c0;
+:root {
+  --color-primary: #d4af37;
+  --color-background: #f9f9f9;
+  --color-secondary: #000;
+  --color-text: #4a4a4a;
+  --color-accent: #c0c0c0;
+  --color-hover: #b68d06;
 }
 
 /* Reset */
 html {
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -30,6 +32,7 @@ html {
   border: 0;
   outline: 0;
   text-decoration: none;
+  background: transparent;
 }
 
 body {
@@ -64,6 +67,46 @@ button,
 input,
 textarea {
   font-family: inherit;
+}
+button{
+  cursor: pointer;
+}
+
+li{
+  list-style-type: none;
+}
+
+/* Components */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  background-color: var(--color-primary);
+  font-family: "vazir-bold";
+  border-radius: 16px;
+  transition: all 250ms;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-hover);
+  color: var(--color-accent);
+}
+
+.secondary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  border-color: transparent;
+  border: 1px solid var(--color-primary);
+  border-radius: 16px;
+  transition: all 250ms;
+}
+
+.secondary-btn:hover {
+  color: #fff;
+  background-color: var(--color-primary);
 }
 
 /* Grid */
