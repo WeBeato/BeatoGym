@@ -76,6 +76,11 @@ li{
   list-style-type: none;
 }
 
+*::selection{
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
 /* Components */
 .btn-primary {
   display: flex;
@@ -205,6 +210,6 @@ li{
   }
 
   h3 {
-    font-size: 4px;
+    font-size: 40px;
   }
 }
