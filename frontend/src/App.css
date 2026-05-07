@@ -209,6 +209,11 @@ nav {
     font-size: 20px;
 }
 
+/* plans Section */
+.plans {
+    padding-top: 80px;
+}
+
 /* Responsive */
 @media (min-width: 576px) {
 
