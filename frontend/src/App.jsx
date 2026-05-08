@@ -185,6 +185,11 @@ function App() {
                     className={`plan ${plan.isPopular ? "plan--popular" : ""}`}
                     key={plan.id}
                   >
+                    {plan.isPopular && (
+                      <div className="plan__popular">
+                        <p>پر طرفدار</p>
+                      </div>
+                    )}
                     <h3 className="plan__title">{plan.title}</h3>
                     <p className="plan__price">
                       {plan.price.toLocaleString("fa", "ir")} تومان / ماه
