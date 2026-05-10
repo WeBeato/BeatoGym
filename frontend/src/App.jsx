@@ -5,6 +5,7 @@ import gymBody2 from "../public/pics/gym-body2.jpg";
 import { CgCircleci, CgGym } from "react-icons/cg";
 import { FaHome } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
+import Header from "./components/Header";
 
 function App() {
   const plans = [
@@ -63,33 +64,7 @@ function App() {
 
   return (
     <>
-      <header>
-        <div className="container">
-          <nav>
-            <button className="secondary-btn header__btn">ورود</button>
-            <ul className="menu">
-              <li className="menu__item">
-                <a href="#hero" className="menu__link">
-                  خانه
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#about" className="menu__link">
-                  درباره
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#plans" className="menu__link">
-                  اشتراک‌ها
-                </a>
-              </li>
-            </ul>
-            <p className="headr__logo">
-              Beato<span>Gym</span>
-            </p>
-          </nav>
-        </div>
-      </header>
+      <Header />
       <main>
         <section className="hero" id="hero">
           <div className="container">
