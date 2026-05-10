@@ -67,6 +67,7 @@ button,
 input,
 textarea {
   font-family: inherit;
+  color: inherit;
 }
 button{
   cursor: pointer;
