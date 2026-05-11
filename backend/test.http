@@ -8,3 +8,12 @@ Content-Type: application/json
   "sessions": 12,
   "planType": "Monthly"
 }
+
+### تست ورود
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "phoneNumber": "09120000000",
+  "password": "password123"
+}
