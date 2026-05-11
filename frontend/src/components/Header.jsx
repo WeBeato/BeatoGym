@@ -1,11 +1,16 @@
 import "./Header.css";
 
-export default function Header() {
+export default function Header({ setIsLoginModalOpen }) {
   return (
     <header>
       <div className="container">
         <nav>
-          <button className="secondary-btn header__btn">ورود</button>
+          <button
+            className="secondary-btn header__btn"
+            onClick={() => setIsLoginModalOpen(true)}
+          >
+            ورود
+          </button>
           <ul className="menu">
             <li className="menu__item">
               <a href="#hero" className="menu__link">

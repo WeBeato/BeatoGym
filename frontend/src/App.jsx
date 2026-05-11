@@ -6,6 +6,8 @@ import { CgCircleci, CgGym } from "react-icons/cg";
 import { FaHome } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import Header from "./components/Header";
+import { useState } from "react";
+import LoginModal from "./components/LoginModal";
 
 function App() {
   const plans = [
@@ -62,9 +64,12 @@ function App() {
     },
   ];
 
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header setIsLoginModalOpen={setIsLoginModalOpen} />
+      {isLoginModalOpen && <LoginModal setIsLoginModalOpen={setIsLoginModalOpen}/>}
       <main>
         <section className="hero" id="hero">
           <div className="container">
@@ -181,8 +186,8 @@ function App() {
                       </span>
                     </div>
                     <ul className="plan__features">
-                      {plan.features.map((feet) => (
-                        <li className="plan__feature">
+                      {plan.features.map((feet,i) => (
+                        <li className="plan__feature" key={i}>
                           <CgCircleci className="plan__feature-icon" />
                           {feet}
                         </li>
