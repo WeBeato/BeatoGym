@@ -1,0 +1,10 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test User",
+  "phoneNumber": "09120000000",
+  "password": "password123",
+  "sessions": 12,
+  "planType": "Monthly"
+}
