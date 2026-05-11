@@ -8,6 +8,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import Header from "./components/Header";
 import { useState } from "react";
 import LoginModal from "./components/LoginModal";
+import Footer from "./components/Footer";
 
 function App() {
   const plans = [
@@ -69,7 +70,9 @@ function App() {
   return (
     <>
       <Header setIsLoginModalOpen={setIsLoginModalOpen} />
-      {isLoginModalOpen && <LoginModal setIsLoginModalOpen={setIsLoginModalOpen}/>}
+      {isLoginModalOpen && (
+        <LoginModal setIsLoginModalOpen={setIsLoginModalOpen} />
+      )}
       <main>
         <section className="hero" id="hero">
           <div className="container">
@@ -186,7 +189,7 @@ function App() {
                       </span>
                     </div>
                     <ul className="plan__features">
-                      {plan.features.map((feet,i) => (
+                      {plan.features.map((feet, i) => (
                         <li className="plan__feature" key={i}>
                           <CgCircleci className="plan__feature-icon" />
                           {feet}
@@ -202,30 +205,7 @@ function App() {
           </div>
         </section>
       </main>
-      <footer>
-        <div className="container">
-          <ul className="footer__links">
-            <li className="footer__link">
-              <a href="#hero">خانه</a>
-            </li>
-            <li className="footer__link">
-              <a href="#about">درباره</a>
-            </li>
-            <li className="footer__link">
-              <a href="#plans">اشتراک‌ها</a>
-            </li>
-          </ul>
-          <div className="footer__info">
-            <p className="footer__copyright">
-              بـیـتـوجـیـم. تمامی حقوق محفوظ است.
-            </p>
-            <p className="footer__developers">
-              Built by <a href="https://github.com/WeBeato">Webeato</a> and{" "}
-              <a href="https://github.com/Its-ech">Its-ech</a>.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
