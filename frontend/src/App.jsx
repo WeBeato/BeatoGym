@@ -2,40 +2,77 @@ import "./App.css";
 import Counter from "./components/Counter";
 import gymBody from "../public/pics/gym-body.jpg";
 import gymBody2 from "../public/pics/gym-body2.jpg";
-import { CgGym } from "react-icons/cg";
+import { CgCircleci, CgGym } from "react-icons/cg";
 import { FaHome } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
+import Header from "./components/Header";
+import { useState } from "react";
+import LoginModal from "./components/LoginModal";
+import Footer from "./components/Footer";
 
 function App() {
+  const plans = [
+    {
+      id: "starter",
+      title: "پلن پایه",
+      price: 790_000,
+      desc: "برای کسانی که تازه می‌خوان شروع کنن.",
+      sessions: 12,
+      sessionsPerWeek: 3,
+      features: [
+        "دسترسی به سالن اصلی",
+        "استفاده از دستگاه‌های هوازی و وزنه",
+        "دوش و کمد شخصی",
+        "بدون دسترسی به کلاس‌های گروهی",
+        "بدون مربی اختصاصی",
+      ],
+      isPopular: false,
+      btn: "secondary-btn",
+    },
+    {
+      id: "pro",
+      title: "پلن حرفه‌ای",
+      price: 1_900_000,
+      desc: "کامل‌ترین تجربه‌ای برای کسانی که جدی تمرین میکنن.",
+      sessions: 16,
+      sessionsPerWeek: 4,
+      features: [
+        "دسترسی به کل باشگاه",
+        "۴ جلسه مربی اختصاصی",
+        "شرکت در کلاس‌های گروهی",
+        "استفاده از سونا و جکوزی",
+        "برنامه غذایی اولیه",
+      ],
+      isPopular: true,
+      btn: "btn-primary",
+    },
+    {
+      id: "elite",
+      title: "پلن الیت (vip)",
+      price: 3_330_000,
+      desc: "تجربه لوکس و vip با تمام امکانات و پشتیبانی شخصی.",
+      sessions: 26,
+      sessionsPerWeek: 6,
+      features: [
+        "دسترسی به کل باشگاه + ورود vip",
+        "۸ جلسه مربی اختصاصی",
+        "کلاس های خصوصی نامحدود",
+        "خدمات ریکاوری پیشرفته",
+        "دعوت از مهمان (ماهانه ۲ نفر)",
+      ],
+      isPopular: false,
+      btn: "secondary-btn",
+    },
+  ];
+
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   return (
     <>
-      <header>
-        <div className="container">
-          <nav>
-            <button className="secondary-btn header__btn">ورود</button>
-            <ul className="menu">
-              <li className="menu__item">
-                <a href="#hero" className="menu__link">
-                  خانه
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#about" className="menu__link">
-                  درباره
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#subscriptions" className="menu__link">
-                  اشتراک‌ها
-                </a>
-              </li>
-            </ul>
-            <p className="headr__logo">
-              Beato<span>Gym</span>
-            </p>
-          </nav>
-        </div>
-      </header>
+      <Header setIsLoginModalOpen={setIsLoginModalOpen} />
+      {isLoginModalOpen && (
+        <LoginModal setIsLoginModalOpen={setIsLoginModalOpen} />
+      )}
       <main>
         <section className="hero" id="hero">
           <div className="container">
@@ -121,7 +158,54 @@ function App() {
             </div>
           </div>
         </section>
+        <section className="plans" id="plans">
+          <div className="container">
+            <h2 className="plans__title">پلن های اشتراک بـیـتـوجـیـم:</h2>
+            <div className="plans__wrap">
+              {plans &&
+                plans.map((plan) => (
+                  <div
+                    className={`plan ${plan.isPopular ? "plan--popular" : ""}`}
+                    key={plan.id}
+                  >
+                    {plan.isPopular && (
+                      <div className="plan__popular">
+                        <p>پر طرفدار</p>
+                      </div>
+                    )}
+                    <h3 className="plan__title">{plan.title}</h3>
+                    <p className="plan__price">
+                      {plan.price.toLocaleString("fa", "ir")} تومان / ماه
+                    </p>
+                    <p className="plan__desc">{plan.desc}</p>
+                    <div className="plan__sessions">
+                      <span className="plan__total-sessions">
+                        {plan.sessions.toLocaleString("fa", "ir")}
+                      </span>
+                      جلسه در ماه
+                      <span className="plan__sessions-perweek">
+                        ({plan.sessionsPerWeek.toLocaleString("fa", "ir")} جلسه
+                        در هفته)
+                      </span>
+                    </div>
+                    <ul className="plan__features">
+                      {plan.features.map((feet, i) => (
+                        <li className="plan__feature" key={i}>
+                          <CgCircleci className="plan__feature-icon" />
+                          {feet}
+                        </li>
+                      ))}
+                    </ul>
+                    <button className={`${plan.btn} plan__btn`}>
+                      انتخاب پلن
+                    </button>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </section>
       </main>
+      <Footer />
     </>
   );
 }

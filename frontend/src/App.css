@@ -1,64 +1,3 @@
-/* Header */
-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 100;
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(8px);
-    margin: 8px auto;
-    border: 1px solid #ccc;
-    border-radius: 40px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-    max-width: 1400px;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 40px;
-}
-
-.headr__logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--color-text);
-    user-select: none;
-}
-
-.headr__logo span {
-    color: var(--color-primary);
-}
-
-.menu {
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    width: 200px;
-}
-
-.menu__item {
-    transition: all 300ms;
-    padding: 2px 8px;
-    height: 30px;
-    border-bottom: 2px solid transparent;
-}
-
-.menu__item:hover {
-    border-bottom-color: var(--color-primary);
-}
-
-.menu__link {
-    color: #000;
-
-}
-
-.header__btn {
-    padding: 0 32px;
-}
-
 /* Hero Section*/
 .hero {
     background: url(../public/pics/gym-header.jpg) no-repeat center -40px;
@@ -209,22 +148,112 @@ nav {
     font-size: 20px;
 }
 
+/* plans Section */
+.plans {
+    padding-top: 80px;
+}
+
+.plans__title {
+    text-align: center;
+}
+
+.plans__wrap {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.plan {
+    width: 100%;
+    border: 1px solid var(--color-accent);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 290px;
+}
+
+.plan--popular {
+    border-color: var(--color-primary);
+    position: relative;
+    box-shadow: 2px 2px 8px var(--color-accent);
+}
+
+.plan__popular {
+    position: absolute;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 4px 24px;
+    border-radius: 16px;
+    top: calc(33px / -2);
+    left: 16px;
+}
+
+.plan__title {
+    text-align: center;
+    background-color: var(--color-accent);
+    padding: 24px;
+    border-radius: 16px 16px 0 0;
+}
+
+.plan__price {
+    font-size: 20px;
+    text-align: center;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.plan__desc {
+    font-size: 18px;
+    text-align: center;
+    padding: 0 16px;
+}
+
+.plan__sessions {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    color: var(--color-text);
+    padding: 8px 0;
+}
+
+.plan__total-sessions {}
+
+.plan__sessions-perweek {}
+
+.plan__features {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.plan__feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.plan__feature-icon {
+    color: var(--color-primary);
+}
+
+.plan__btn {
+    margin: 0 24px 24px;
+    padding: 4px 0;
+    font-size: 18px;
+}
+
 /* Responsive */
 @media (min-width: 576px) {
-
-    /* Header */
-    nav {
-        height: 64px;
-    }
-
-    .headr__logo {
-        font-size: 26px;
-    }
-
-    .header__btn {
-        font-size: 20px;
-        padding: 0 40px;
-    }
 
     /* Hero Section*/
     .hero__content {
@@ -265,14 +294,19 @@ nav {
     .about__feauture-icon {
         font-size: 24px;
     }
+
+    /* plans Section */
+    .plans__wrap {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .plan {
+        width: 320px;
+    }
 }
 
 @media (min-width: 768px) {
-
-    /* Header */
-    .menu {
-        display: flex;
-    }
 
     /* Hero Section*/
     .hero,
@@ -336,6 +370,11 @@ nav {
 
     .about__feauture-icon {
         font-size: 28px;
+    }
+
+    /* plans Section */
+    .plan__feature {
+        font-size: 18px;
     }
 }
 
@@ -404,6 +443,11 @@ nav {
     .about__feauture:last-child {
         width: 100%;
     }
+
+    /* plans Section */
+    .plans__wrap {
+        gap: 40px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -459,6 +503,29 @@ nav {
 
     .about__feauture {
         font-size: 24px;
+    }
+
+    /* plans Section */
+    .plan {
+        width: 400px;
+    }
+
+    .plan__price {
+        font-size: 24px;
+    }
+
+    .plan__desc,
+    .plan__sessions,
+    .plan__feature {
+        font-size: 20px;
+    }
+
+    .plan__desc {
+        padding: 0 32px;
+    }
+
+    .plan__features {
+        padding: 16px 32px;
     }
 }
 
@@ -516,5 +583,15 @@ nav {
 
     .about__feauture-icon {
         font-size: 30px;
+    }
+
+    /* plans Section */
+    .plans__wrap {
+        flex-wrap: nowrap;
+        gap: 64px;
+    }
+
+    .plan {
+        width: 100%;
     }
 }
