@@ -2,13 +2,15 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const generateUniqueCode = require('../utils/generateCode');
+const jwt = require('jsonwebtoken');
+const { use } = require('../routes/authRoutes');
 
 // main code 
 
 // date-user
 exports.register = async (req , res) => {
     try {
-        const {fillName , phoneNumber , password } = req.body;
+        const {fullName , phoneNumber , password , planType , sessions } = req.body;
         
         // uset-chek
         let user = await User.findOne({phoneNumber});
@@ -28,7 +30,9 @@ exports.register = async (req , res) => {
             fullName,
             phoneNumber,
             password: hashedPassword,
-            uniqueCode
+            uniqueCode,
+            planType: planType || 'none',
+            sessions: sessions || 0
         });
 
         // save user
@@ -40,8 +44,54 @@ exports.register = async (req , res) => {
             uniqueCode: user.uniqueCode
         });
 
-    }catch (err){
-        console.log(err);
-        res.status(500).send('خطای سرور در هنگام ثبت‌نام')
+    } catch (err) {
+        res.status(500).json({ 
+            message: "خطای سرور",
+            error: err.message, 
+            stack: err.stack  
+        });
+    }
+};
+
+
+
+// login function 
+
+exports.login = async (req, res) => {
+    try{
+        const {phoneNumber, password} = req.body;
+        // user
+        const user = await User.findOne({phoneNumber});
+        if (!user) {
+            return res.status(400).json({message:'user not funded!!!!'});
+        }
+        // pass
+        const isMatch = await bcrypt.compare(password, user.password);
+        if(!isMatch){ 
+            return res.status(400).json({message:'The password is incorrect.'});
+        }
+        // token
+        const token = jwt.sign(
+            {id: user._id , role: user.role},
+            'secret_key_beato_gym',
+            {expiresIn: '1d'}
+        );
+        
+        res.json({
+            message:'Login was successful',
+            token,
+            user:{
+                fullName: user.fullName,
+                uniqueCode: user.uniqueCode,
+                role: user.role
+            }
+        });
+
+    } catch (err) {
+        res.status(500).json({ 
+            message: "خطای سرور",
+            error: err.message, 
+            stack: err.stack  
+        });
     }
 };
