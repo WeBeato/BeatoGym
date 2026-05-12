@@ -1,9 +1,12 @@
 import "./LoginModal.css";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import apiRequest from "../services/axios/config";
+import { useState } from "react";
 
 export default function LoginModal({ setIsLoginModalOpen }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -22,18 +25,26 @@ export default function LoginModal({ setIsLoginModalOpen }) {
     }
   };
 
-  const handleLogin = (data) => {
-    const res = apiRequest.post("/auth/login", {
-      phoneNumber: data.phone,
-      password: data.password,
-    });
-    console.log(res);
+  const handleLogin = async (data) => {
+    setIsLoading(true);
+    try {
+      const res = await apiRequest.post("/auth/login", {
+        phoneNumber: data.phone,
+        password: data.password,
+      });
+      console.log(res);
+      setIsLoading(false);
+    } catch (err) {
+      setError("مشکلی پیش اومد.");
+      setIsLoading(false);
+      console.log(err);
+    }
   };
 
   return (
     <div className="backdrop" onClick={handleModalClose}>
       <form className="login-modal" onSubmit={handleSubmit(handleLogin)}>
-        <h2 className="login-modal__title">ورود ورزشکار</h2>
+        <p className="login-modal__title">ورود ورزشکار</p>
 
         <input
           type="number"
@@ -86,9 +97,14 @@ export default function LoginModal({ setIsLoginModalOpen }) {
         {errors.password && (
           <p className="login-modal__error">{errors.password.message}</p>
         )}
-        <button type="submit" className="btn-primary login-modal__sumbit">
-          ورود
+        <button
+          type="submit"
+          className="btn-primary login-modal__sumbit"
+          disabled={isLoading ? true : false}
+        >
+          {isLoading ? "درحال بررسی..." : "ورود"}
         </button>
+        {error && <p className="text-error">{error}</p>}
       </form>
     </div>
   );
