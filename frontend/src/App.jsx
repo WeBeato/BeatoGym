@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import { useState } from "react";
 import LoginModal from "./components/LoginModal";
 import Footer from "./components/Footer";
+import SignupModal from "./components/SignupModal";
 
 function App() {
   const plans = [
@@ -66,6 +67,7 @@ function App() {
   ];
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
   return (
     <>
@@ -83,7 +85,15 @@ function App() {
                 <p className="hero__cta">
                   همین حالا ثبت‌نام کن و اولین جلسه‌ت رو رایگان تجربه کن.
                 </p>
-                <button className="btn-primary hero__btn">ثبت‌نام</button>
+                <button
+                  className="btn-primary hero__btn"
+                  onClick={() => setIsSignupModalOpen(true)}
+                >
+                  ثبت‌نام
+                </button>
+                {isSignupModalOpen && (
+                  <SignupModal setIsSignupModalOpen={setIsSignupModalOpen} />
+                )}
               </div>
               <div className="hero__statistic">
                 <div className="hero__foundation">
