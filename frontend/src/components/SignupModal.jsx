@@ -47,9 +47,19 @@ export default function SignupModal({ setIsSignupModalOpen }) {
       console.log(res);
       setIsLoading(false);
     } catch (err) {
-      setError("مشکلی پیش اومد.");
+      if (err.response) {
+        const status = err.response.status;
+        if (status >= 400) {
+          setError("اشکال در پردازش درخواست شما.");
+        }
+        if (status >= 500) {
+          setError("اشکال در سرور.");
+        } else {
+          setError("اشکال در شبکه.");
+        }
+      }
+      console.log(err.message);
       setIsLoading(false);
-      console.log(err);
     }
   };
 
